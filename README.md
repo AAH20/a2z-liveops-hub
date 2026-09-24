@@ -56,6 +56,10 @@ a2z-liveops \
 
 Open `http://127.0.0.1:8791/`, enter the operator key, and select **Load synthetic demo**. Switch to the reviewer key to approve or reject. Synthetic drafts are marked and cannot be sent, including through the API. A real send requires a separately configured Zendesk subdomain and `ZENDESK_OAUTH_TOKEN`, plus an authorized live ticket. No automatic reply runs in the background.
 
+### Use a versioned support pack
+
+[A2Z Resolution Network](https://github.com/AAH20/a2z-resolution-network) builds synthetic-tested, content-addressed support packs. Run its `active --customer <scope>` command and use the returned `knowledge_path` as this Hub's `--knowledge` argument. Keep the selected pack pinned during a review-and-send cycle: Resolution Deploy rejects a send if its knowledge snapshot changed after the draft was prepared. Network packs do not authorize Zendesk access or establish customer acceptance.
+
 ## Workflow contract
 
 ```mermaid
