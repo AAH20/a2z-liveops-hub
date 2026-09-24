@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a2z-liveops-hub"
+version = "0.1.0"
+description = "Local human-reviewed operator console for a pinned A2Z Resolution Deploy app"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "A2Z SOC"}]
+dependencies = []
+
+[project.scripts]
+a2z-liveops = "liveops_hub.server:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+liveops_hub = ["static/*"]

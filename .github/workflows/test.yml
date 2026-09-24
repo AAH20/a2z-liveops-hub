@@ -1,0 +1,32 @@
+name: Test local pilot
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -e .
+      - run: python -m unittest discover -s tests -v
+      - uses: actions/checkout@v4
+        with:
+          repository: AAH20/a2z-agent-app-factory
+          ref: ddbfd2fc33cdb205b3cf49a1f7977e8e13627228
+          path: factory
+          persist-credentials: false
+      - uses: actions/checkout@v4
+        with:
+          repository: AAH20/a2z-resolution-engine
+          ref: 5aa314fb1b2b24cb0a90d6b3a64d5af83b49c5c2
+          path: resolution
+          persist-credentials: false
+      - run: python -m pip install -e ./factory
+      - run: a2z-app pack factory/apps/resolution-deploy.json resolution --output /tmp/resolution.a2zapp
+      - run: a2z-app install /tmp/resolution.a2zapp /tmp/resolution-installed
+      - run: python -m unittest tests.test_integration -v
+        env:
+          RESOLUTION_ENGINE_KEY: synthetic-ci-key-12345678901234567890

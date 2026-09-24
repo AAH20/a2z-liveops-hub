@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A2Z LiveOps Hub</title><link rel="stylesheet" href="/style.css"></head>
+<body><header><div class="eyebrow">A2Z SOC · LOCAL PILOT</div><h1>LiveOps Hub</h1><p>One customer scope. Human-reviewed support drafts. Operator-declared outcomes.</p><span class="badge">Synthetic demo available · No verified customer resolutions</span></header>
+<main>
+<section class="panel"><h2>Access</h2><p>Use the role key given by the local administrator. It stays in this browser session.</p><div class="line"><label>Role key <input id="key" type="password" autocomplete="off" placeholder="Operator, reviewer, or sender key"></label><button id="saveKey">Use key</button><button id="clearKey" class="quiet">Clear</button></div><p id="notice" role="status" aria-live="polite"></p></section>
+<section class="panel"><h2>Prepare a ticket</h2><p>Import an authorized Zendesk ticket for review, or use the bundled invented ticket.</p><div class="line"><label>Ticket ID <input id="ticket" inputmode="numeric" placeholder="Zendesk ticket ID"></label><label>Locale <select id="locale"><option value="en">English</option><option value="ar">Arabic</option></select></label><button id="import">Import</button><button id="demo" class="quiet">Load synthetic demo</button></div></section>
+<section class="panel"><div class="line spread"><div><h2>Review inbox</h2><p>Approval and send are separate actions performed with separate role keys.</p></div><button id="refresh" class="quiet">Refresh</button></div><div id="drafts" class="cards"></div></section>
+<section class="panel"><h2>Local pilot counts</h2><p>These counts reflect local states and operator declarations. They do not establish customer acceptance.</p><div id="metrics" class="metrics"></div></section>
+<section class="panel"><h2>Event trail</h2><div id="events" class="events"></div></section>
+</main><footer>A2Z LiveOps Hub · inspectable local reference implementation · no automatic replies</footer><script src="/app.js" defer></script></body></html>
